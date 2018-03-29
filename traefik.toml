@@ -1,30 +1,8 @@
-defaultEntryPoints = ["http", "https"]
-logLevel = "ERROR"
+logLevel = "DEBUG"
 
 [web]
 address = ":8080"
-  [web.auth.basic]
-  users = ["admin:$apr1$618yUKvj$EXfiCr3vY05ePpx2nrgvc."]
 
 [docker]
-domain = "plataformait.com"
+domain = "example.local"
 watch = true
-endpoint = "unix:///var/run/docker.sock"
-exposedbydefault = true
-
-[entryPoints]
-  [entryPoints.http]
-  address = ":80"
-    [entryPoints.http.redirect]
-      entryPoint = "https"
-  [entryPoints.https]
-  address = ":443"
-    [entryPoints.https.tls]
-
-[acme]
-  email = "dev@plataforma.local"
-  storageFile = "acme.json"
-  entryPoint = "https"
-  OnHostRule = true
-  [acme.httpChallenge]
-    entryPoint = "http"
